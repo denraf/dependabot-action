@@ -1,6 +1,10 @@
 name: "Dependabot Generator"
 description: "Generate Dependabot config file"
 
+inputs:
+  exclude_dir:
+    description: "Exclude directory from dependabot configuration"
+    default: ""
 runs:
   using: "docker"
   image: "./Dockerfile"

@@ -2,11 +2,15 @@ import os
 import re
 from jinja2 import Environment, FileSystemLoader
 
+exclude_dir = os.getenv('INPUT_EXCLUDE_DIR')
+
 def find_files(filter=""):
 
     file_dirs = []
 
     for subdir, dirs, files in os.walk('.'):
+        if exclude_dir in subdir:
+          continue
         for file in files:
             dir = re.search(filter, file)
             if dir != None:
