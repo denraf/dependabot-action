@@ -19,7 +19,7 @@ terraform_dirs = find_files('.*.tf')
 docker_dirs = find_files('Dockerfile')
 npm_dirs = find_files('package.json')
 
-file_loader = FileSystemLoader(/templates)
+file_loader = FileSystemLoader('/templates')
 env = Environment(loader=file_loader)
 
 template = env.get_template('dependabot.yml.j2')
