@@ -2,7 +2,7 @@ import os
 import re
 from jinja2 import Environment, FileSystemLoader
 
-exclude_dir = os.getenv('env_exclude_dir')
+exclude_dir = os.getenv('EXCLUDE_DIR')
 
 def find_files(filter=""):
 

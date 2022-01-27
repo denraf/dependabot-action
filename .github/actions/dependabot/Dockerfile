@@ -1,6 +1,6 @@
 FROM python:latest
-ARG exclude-dir
-ENV env_exclude_dir=$exclude-dir
+ARG ARG_EXCLUDE_DIR
+ENV EXCLUDE_DIR=$ARG_EXCLUDE_DIR
 RUN pip install jinja2
 
 COPY . .
