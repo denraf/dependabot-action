@@ -3,4 +3,4 @@ FROM python:latest
 RUN pip install jinja2
 
 COPY . .
-CMD [ "python", "/generatory.py" ]
+CMD [ "python", "/generator.py" ]
