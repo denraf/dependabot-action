@@ -1,15 +1,8 @@
 name: "Dependabot Generator"
 description: "Generate Dependabot config file"
-inputs:
-  some-name:
-    description: "Exclude directory for remote action when different path is set for checkout"
-    required: false
-    default: ''
 runs:
   using: "docker"
   image: "Dockerfile"
-  args:
-    - ${{ inputs.some-name }}
 branding:
   icon: "terminal"
   color: "red"
