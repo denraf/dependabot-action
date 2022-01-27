@@ -1,0 +1,25 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  {%- for dir in docker_dirs %}
+  - package-ecosystem: "docker"
+    directory: "{{ dir }}"
+    schedule:
+      interval: "daily"
+  {%- endfor %}
+  {%- for dir in npm_dirs %}
+  - package-ecosystem: "npm"
+    directory: "{{ dir }}"
+    schedule:
+      interval: "daily"
+  {%- endfor %}
+  {%- for dir in terraform_dirs %}
+  - package-ecosystem: "terraform"
+    directory: "{{ dir }}"
+    schedule:
+      interval: "daily"
+  {%- endfor %}

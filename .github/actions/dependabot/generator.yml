@@ -1,0 +1,9 @@
+name: "Dependabot Generator"
+description: "Generate Dependabot config file"
+
+runs:
+  using: "docker"
+  image: "./Dockerfile"
+branding:
+  icon: "terminal"
+  color: "red"
