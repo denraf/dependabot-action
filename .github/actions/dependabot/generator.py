@@ -3,6 +3,7 @@ import re
 from jinja2 import Environment, FileSystemLoader
 
 exclude_dir = os.getcwd()
+print(exclude_dir)
 
 def find_files(filter=""):
 
