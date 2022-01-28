@@ -18,6 +18,7 @@ def find_files(filter=""):
         for file in files:
             dir = re.search(filter, file)
             if dir != None:
+              print(subdir)
               if subdir == '.':
                   adddir = '/'
               else:
