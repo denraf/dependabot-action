@@ -5,26 +5,32 @@
 
 version: 2
 updates:
-  {%- for dir in docker_dirs %}
+  {%- for dir in docker_dirs|sort %}
   - package-ecosystem: "docker"
     directory: "{{ dir }}"
     schedule:
       interval: "daily"
   {%- endfor %}
-  {%- for dir in npm_dirs %}
+  {%- for dir in npm_dirs|sort %}
   - package-ecosystem: "npm"
     directory: "{{ dir }}"
     schedule:
       interval: "daily"
   {%- endfor %}
-  {%- for dir in terraform_dirs %}
+  {%- for dir in terraform_dirs|sort %}
   - package-ecosystem: "terraform"
     directory: "{{ dir }}"
     schedule:
       interval: "daily"
   {%- endfor %}
-  {%- for dir in go_dirs %}
+  {%- for dir in go_dirs|sort %}
   - package-ecosystem: "gomod"
+    directory: "{{ dir }}"
+    schedule:
+      interval: "daily"
+  {%- endfor %}
+  {%- for dir in ruby_dirs|sort %}
+  - package-ecosystem: "bundler"
     directory: "{{ dir }}"
     schedule:
       interval: "daily"
