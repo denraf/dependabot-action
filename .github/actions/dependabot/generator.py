@@ -11,8 +11,6 @@ def find_files(filter=""):
     file_dirs = []
 
     for subdir, dirs, files in os.walk('.'):
-        if subdir.find(local_path) != -1:
-          continue
         if exclude_dir != "" and subdir.find(exclude_dir) != -1:
           continue
         for file in files:
