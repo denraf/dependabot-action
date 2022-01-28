@@ -3,6 +3,7 @@ import re
 import sys
 from jinja2 import Environment, FileSystemLoader
 
+local_path = sys.path[0]
 exclude_dir = os.getenv('INPUT_EXCLUDE-DIR', "")
 
 def find_files(filter=""):
@@ -10,13 +11,20 @@ def find_files(filter=""):
     file_dirs = []
 
     for subdir, dirs, files in os.walk('.'):
-        if subdir.find(exclude_dir) != -1:
+        if subdir.find(local_path) != -1:
+          continue
+        if exclude_dir != "" and subdir.find(exclude_dir) != -1:
           continue
         for file in files:
             dir = re.search(filter, file)
             if dir != None:
-              if subdir[1:] not in file_dirs:
-                  file_dirs.append(subdir[1:])
+              if subdir == '.':
+                  adddir = '/'
+              else:
+                  adddir = subdir[1:]
+
+              if adddir not in file_dirs:
+                  file_dirs.append(adddir)
 
     return file_dirs
 
@@ -25,7 +33,7 @@ docker_dirs = find_files('Dockerfile')
 npm_dirs = find_files('package.json')
 go_dirs = find_files('go.mod')
 
-file_loader = FileSystemLoader('/templates')
+file_loader = FileSystemLoader(local_path + '/templates')
 env = Environment(loader=file_loader)
 
 template = env.get_template('dependabot.yml.j2')

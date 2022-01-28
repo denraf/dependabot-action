@@ -23,7 +23,7 @@ updates:
     schedule:
       interval: "daily"
   {%- endfor %}
-  {%- for dir in godirs_dirs %}
+  {%- for dir in go_dirs %}
   - package-ecosystem: "gomod"
     directory: "{{ dir }}"
     schedule:
