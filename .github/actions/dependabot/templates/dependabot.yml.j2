@@ -3,6 +3,9 @@
 # Please see the documentation for all configuration options:
 # https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
+# ignore
+# Don't upgrade major version of any docker container image
+
 version: 2
 updates:
   {%- for dir in docker_dirs|sort %}
@@ -10,6 +13,12 @@ updates:
     directory: "{{ dir }}"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "*"
+        update-types:
+        - "version-update:semver-major"
+        versions:
+        - "*.*rc"
   {%- endfor %}
   {%- for dir in npm_dirs|sort %}
   - package-ecosystem: "npm"
@@ -31,6 +40,18 @@ updates:
   {%- endfor %}
   {%- for dir in ruby_dirs|sort %}
   - package-ecosystem: "bundler"
+    directory: "{{ dir }}"
+    schedule:
+      interval: "daily"
+  {%- endfor %}
+  {%- for dir in pip_dirs|sort %}
+  - package-ecosystem: "pip"
+    directory: "{{ dir }}"
+    schedule:
+      interval: "daily"
+  {%- endfor %}
+  {%- for dir in maven_dirs|sort %}
+  - package-ecosystem: "maven"
     directory: "{{ dir }}"
     schedule:
       interval: "daily"
