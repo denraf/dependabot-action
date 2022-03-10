@@ -4,7 +4,7 @@
 # https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 # ignore
-# Don't upgrade major version of any docker container image
+# Don't upgrade major version of a ruby docker container image
 
 version: 2
 updates:
@@ -14,11 +14,9 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      - dependency-name: "*"
+      - dependency-name: "ruby"
         update-types:
         - "version-update:semver-major"
-        versions:
-        - "*.*rc"
   {%- endfor %}
   {%- for dir in npm_dirs|sort %}
   - package-ecosystem: "npm"
