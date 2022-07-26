@@ -6,6 +6,14 @@
 # ignore
 # Don't upgrade major version of a ruby docker container image
 
+{%- if terraform_dirs|length > 0 %}
+registries:
+  terraform-cloud:
+    type: terraform-registry
+    url: https://app.terraform.io/Clearbit
+    token: ${{secrets.TF_CLOUD_TOKEN}}
+{%- endif %}
+
 version: 2
 updates:
   {%- for dir in docker_dirs|sort %}
