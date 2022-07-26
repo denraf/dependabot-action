@@ -11,7 +11,7 @@ registries:
   terraform-cloud:
     type: terraform-registry
     url: https://app.terraform.io/Clearbit
-    token: ${{secrets.TF_CLOUD_TOKEN}}
+{%- raw %}    token: ${{ secrets.TF_CLOUD_TOKEN }}{% endraw %}
 {%- endif %}
 
 version: 2
