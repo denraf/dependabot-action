@@ -35,6 +35,8 @@ updates:
   {%- for dir in terraform_dirs|sort %}
   - package-ecosystem: "terraform"
     directory: "{{ dir }}"
+    registries:
+      - terraform-cloud
     schedule:
       interval: "daily"
   {%- endfor %}
