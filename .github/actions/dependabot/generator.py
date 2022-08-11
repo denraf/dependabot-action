@@ -25,7 +25,7 @@ def find_files(filter=""):
 
     return file_dirs
 
-terraform_dirs = find_files('.*.tf')
+terraform_dirs = find_files('\.tf$')
 docker_dirs = find_files('Dockerfile')
 npm_dirs = find_files('package.json')
 go_dirs = find_files('go.mod')
