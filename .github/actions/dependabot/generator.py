@@ -25,7 +25,7 @@ def find_files(filter=""):
 
     return file_dirs
 
-gh_actions_dir = os.path.is('.github/workflows')
+gh_actions_dir = os.path.isdir('.github/workflows')
 
 terraform_dirs = find_files('\.tf$')
 docker_dirs = find_files('Dockerfile')
