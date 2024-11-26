@@ -25,6 +25,8 @@ def find_files(filter=""):
 
     return file_dirs
 
+gh_actions_dir = os.path.isdir('.github/workflows')
+
 terraform_dirs = find_files('\.tf$')
 docker_dirs = find_files('Dockerfile')
 npm_dirs = find_files('package.json')
@@ -38,7 +40,7 @@ env = Environment(loader=file_loader)
 
 template = env.get_template('dependabot.yml.j2')
 
-rendered_output = template.render(terraform_dirs=terraform_dirs,docker_dirs=docker_dirs,npm_dirs=npm_dirs,go_dirs=go_dirs,ruby_dirs=ruby_dirs,pip_dirs=pip_dirs,maven_dirs=maven_dirs)
+rendered_output = template.render(terraform_dirs=terraform_dirs,docker_dirs=docker_dirs,npm_dirs=npm_dirs,go_dirs=go_dirs,ruby_dirs=ruby_dirs,pip_dirs=pip_dirs,maven_dirs=maven_dirs,gh_actions_dir=gh_actions_dir)
 
 f = open(".github/dependabot.yml", "w")
 f.write(rendered_output)

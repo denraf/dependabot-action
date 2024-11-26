@@ -16,6 +16,12 @@ registries:
 
 version: 2
 updates:
+  {%- if gh_actions_dir %}
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  {%- endif %}
   {%- for dir in docker_dirs|sort %}
   - package-ecosystem: "docker"
     directory: "{{ dir }}"
